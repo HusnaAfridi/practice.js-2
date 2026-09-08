@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beating Heart ✨ Interactive JavaScript Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Canvas for 3D Volumetric Heart & Particle System -->
+  <canvas id="heartCanvas"></canvas>
+
+  <!-- Ambient Glow overlay -->
+  <div class="ambient-glow"></div>
+
+  <!-- Header & Message -->
+  <header class="hero-header">
+    <h1 id="customMessage" class="glow-text">You Make My Heart Beat</h1>
+    <p class="sub-text">Interactive 3D Particle Heart &bull; Move cursor to tilt &bull; Click anywhere for love sparks</p>
+  </header>
+
+  <!-- Floating HUD / Control Bar -->
+  <aside class="control-panel" id="controlPanel">
+    <div class="panel-header">
+      <span class="panel-title">✨ Heart Controls</span>
+      <button id="togglePanelBtn" class="icon-btn mini-btn" title="Minimize Controls">&minus;</button>
+    </div>
+
+    <div class="panel-body" id="panelBody">
+      <!-- Beat Tempo -->
+      <div class="control-group">
+        <label for="speedSlider">Heartbeat Rhythm: <span id="bpmLabel">75 BPM</span></label>
+        <input type="range" id="speedSlider" min="40" max="140" value="75" step="1" />
+      </div>
+
+      <!-- Color Themes -->
+      <div class="control-group">
+        <label>Theme Palette</label>
+        <div class="color-palette">
+          <button class="color-swatch active" data-theme="ruby" style="--swatch-color: #ff1e56;" title="Ruby Passion"></button>
+          <button class="color-swatch" data-theme="crimson" style="--swatch-color: #ff0844;" title="Crimson Fire"></button>
+          <button class="color-swatch" data-theme="neon" style="--swatch-color: #ff416c;" title="Neon Bloom"></button>
+          <button class="color-swatch" data-theme="golden" style="--swatch-color: #ff758c;" title="Rose Gold"></button>
+        </div>
+      </div>
+
+      <!-- Particle Density -->
+      <div class="control-group">
+        <label for="densitySlider">Particle Density: <span id="densityLabel">Normal</span></label>
+        <input type="range" id="densitySlider" min="1500" max="5000" value="2800" step="100" />
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button id="audioToggleBtn" class="action-btn">
+          <span class="btn-icon">🔊</span>
+          <span class="btn-text">Heartbeat Sound: OFF</span>
+        </button>
+        <button id="editMsgBtn" class="action-btn secondary">
+          <span class="btn-icon">✍️</span>
+          <span class="btn-text">Change Message</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Interactive Click Hint Badge -->
+  <div class="hint-badge" id="hintBadge">
+    <span>❤️ Click anywhere to burst hearts ❤️</span>
+  </div>
+
+  <!-- Modal for Editing Custom Message -->
+  <div class="modal-backdrop" id="messageModal">
+    <div class="modal-box">
+      <h3>Personalize Message</h3>
+      <p>Enter the text you want floating above the beating heart:</p>
+      <input type="text" id="messageInput" maxlength="45" placeholder="e.g. Forever & Always" />
+      <div class="modal-actions">
+        <button id="cancelModalBtn" class="btn btn-secondary">Cancel</button>
+        <button id="saveModalBtn" class="btn btn-primary">Save Text</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
